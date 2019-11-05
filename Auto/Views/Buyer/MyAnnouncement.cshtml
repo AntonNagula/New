@@ -1,0 +1,64 @@
+﻿@model  IList<Auto.ModelsApp.AppCar>
+@{
+    Layout = "~/Views/Shared/NewHead.cshtml";
+    ViewBag.Title = "Машины покупателя";
+}
+@*<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="~/Content/Site.css" />
+</head>
+<body>*@
+
+    <table class="table">
+        <tr>
+            <th>Название модели</th>            
+            <th>Изображение</th>
+            <th>Статус</th>
+            <th>Покупатели</th>
+            <th>Редактирование</th>
+            <th>Удаление</th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var i in Model)
+            {
+        <tr>
+            <td>
+                <a href="#">@Html.DisplayFor(modelItem => i.Name)</a>
+                <br />
+                @Html.DisplayFor(modelItem => i.Price)$
+            </td>
+            <td>
+                <img src="~/Files/@i.ExtencionName" width="300" height="200" alt="@i.Name">
+            </td>
+            <td>
+                @i.Status
+            </td>
+            
+            <td>
+                <form method="get" action="/Buyer/BuyersForCar/@i.Id">
+                    <button class="btn btn-primary">Покупатели</button>
+                </form>
+                <form method="get" action="/Buyer/AutoSpeach/@i.Id">
+                    <button class="btn btn-success" style="">Чат</button>
+                </form>
+            </td>
+            <td>
+                <form method="get" action="/Buyer/UpdateCar/@i.Id">
+                    <button class="btn btn-primary">Редактирование</button>
+                </form>
+
+            </td>
+            <td>
+                <form method="get" action="/Buyer/DeleteCar/@i.Id">
+                    <button class="btn btn-primary">Удалить</button>
+                </form>
+
+            </td>
+        </tr>
+            }
+        }
+    </table>
+
+@*</body>
+</html>*@

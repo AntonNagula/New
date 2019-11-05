@@ -1,0 +1,41 @@
+﻿@model Auto.ModelsApp.FormForDialoge
+@{
+
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+</head>
+<body>
+    <h2>Чат-комната</h2>
+
+    <div class="main">
+        <div id="chatBody">
+            <div id="inputForm">
+                <input id="SpeachId" type="hidden" value=@Model.Id />
+                <input id="username" type="hidden" value=@Model.Name />
+                <input type="text" id="message" />
+                <input type="button" id="sendmessage" value="Отправить" />
+            </div>
+            <div id="chatroom">
+                @foreach (var i in Model.messages)
+                {
+                    <div> @i.Name : @i.Text</div>
+                }
+            </div>
+        </div>
+        <input id="hdId" type="hidden" />
+        <input id="username" type="hidden" />
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!--Ссылка на библиотеку SignalR -->
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/util.js"></script>
+</body>
+</html>

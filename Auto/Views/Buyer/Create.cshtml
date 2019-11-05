@@ -1,0 +1,21 @@
+﻿@model Auto.ModelsApp.DropList
+@{
+    Layout = "~/Views/Shared/ForCreate.cshtml";
+    ViewBag.Title = "Добавить машину";
+}
+    <div id="start">
+        <h4>Выберите файл для загрузки</h4>
+        @using (Html.BeginForm("Create", "Buyer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <label class="control-label">Бренд: </label>
+            @Html.DropDownList("BrandId", Model.brands as SelectList,
+                        htmlAttributes: new { @class = "form-control" })
+            <input class="btn" type="file" name="upload" required="required" /><br>
+            <input style="width:300px;"  class="form-control input-fixed" type="text" name="Name" required="required" placeholder="введите название модели" /><br>
+            <input style="width:300px;" class="form-control input-fixed" type="text" name="CarBrand" placeholder="введите название бренда" /><br>
+            <input style="width:300px;" class="form-control input-fixed" type="text" name="Price" required="required" placeholder="введите цену моделей" pattern="^[ 0-9]+$" /><br>
+            <textarea class="enter" name="Info" placeholder="Доп. информация"></textarea>
+            <button style="margin-left:35%" class="btn btn-success">Загрузить</button>
+            
+        }
+    </div>
